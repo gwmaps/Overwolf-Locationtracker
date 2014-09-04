@@ -66,6 +66,8 @@ require_once(INCLUDEDIR.'config.inc.php');
 require_once(INCLUDEDIR.'func_common.inc.php');
 
 $db = new SQL();
+$db->use_ssl = $mysql['use_ssl'];
+$db->ssl_ca = $mysql['ssl_ca'];
 $db->connect($mysql['server'], $mysql['user'], $mysql['password'], $mysql['dbname']);
 
 $gw2api = new GW2API();
