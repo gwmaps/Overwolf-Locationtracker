@@ -124,4 +124,21 @@ class GW2API{
 		return false;
 	}
 
+	/**
+	 * The ugly coordinate recalculation
+	 *
+	 * @param array $continent_rect
+	 * @param array $map_rect
+	 * @param array $point
+	 *
+	 * @return array point
+	 */
+	public function recalc_coords($continent_rect, $map_rect, $point){
+		// don't look at it. really! it will melt your brain and make your eyes bleed!
+		return [
+			round($continent_rect[0][0]+($continent_rect[1][0]-$continent_rect[0][0])*($point[0]-$map_rect[0][0])/($map_rect[1][0]-$map_rect[0][0])),
+			round($continent_rect[0][1]+($continent_rect[1][1]-$continent_rect[0][1])*(1-($point[1]-$map_rect[0][1])/($map_rect[1][1]-$map_rect[0][1])))
+		];
+	}
+
 }
