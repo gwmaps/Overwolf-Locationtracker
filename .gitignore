@@ -1,0 +1,16 @@
+#################
+## PHPStorm
+#################
+
+.idea/
+
+
+#################
+## Misc
+#################
+
+app/files/*.png
+app/files/img/*
+app/files/css/*.ttf
+backend/inc/config.inc.php
+source/
