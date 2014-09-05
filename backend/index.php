@@ -72,6 +72,11 @@ $db->connect($mysql['server'], $mysql['user'], $mysql['password'], $mysql['dbnam
 
 $gw2api = new GW2API();
 
+// guild emblem bitfields
+define('FlipForegroundHorizontal', 0x1);
+define('FlipForegroundVertical',   0x2);
+define('FlipBackgroundHorizontal', 0x4);
+define('FlipBackgroundVertical',   0x8);
 
 // the response array
 $response = [];
@@ -322,6 +327,14 @@ else if(gpc_in('json', 'post')){
 							default: $state = 0; break; // online -> green
 						}
 
+						// fix WvW borderland map names
+						$borderlands = [
+							'de' => '%s Grenzlande',
+							'en' => '%s Borderlands',
+							'es' => 'Tierras fronterizas (%s)',
+							'fr' => 'Territoires frontaliers (%s)',
+						];
+
 						$response[$r['player_uid']] = [
 							'charname' => $r['char_name'],
 							'commander' => $r['commander'],
@@ -339,7 +352,7 @@ else if(gpc_in('json', 'post')){
 							],
 							'map' => [
 								'id' => $r['map_id'],
-								'name' => stripslashes($r['map_name']),
+								'name' => in_array((int)$r['map_id'], [94, 95, 96]) ? $borderlands[$lang] : stripslashes($r['map_name']),
 							],
 							'pos' => $gw2api->recalc_coords(json_decode($r['continent_rect'], true), json_decode($r['map_rect'], true), [$r['pos_x'], $r['pos_y']]),
 							'angle' => $r['pos_angle'] * -1,
