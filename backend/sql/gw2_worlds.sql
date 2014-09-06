@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS `gw2_worlds` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 INSERT INTO `gw2_worlds` (`world_id`, `lang`, `name_de`, `name_en`, `name_es`, `name_fr`) VALUES
+(0, 'eu', '-', '-', '-', '-'),
 (1001, 'us', 'Ambossfels', 'Anvil Rock', 'Roca del Yunque', 'Rocher de l''enclume'),
 (1002, 'us', 'Borlis-Pass', 'Borlis Pass', 'Paso de Borlis', 'Passage de Borlis'),
 (1003, 'us', 'Jakbiegung', 'Yak''s Bend', 'Declive del Yak', 'Courbe du Yak'),
