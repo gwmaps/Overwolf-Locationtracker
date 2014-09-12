@@ -1,0 +1,99 @@
+{
+	"manifest_version": 1,
+	"type": "WebApp",
+	"meta": {
+		"name": "Guild Wars 2 Squad Tracker",
+		"version": "1.0.0",
+		"minimum-overwolf-version": "0.77.10",
+		"author": "Smiley (smiley@chillerlan.net)",
+		"icon": "IconMouseOver.png",
+		"icon_gray": "IconMouseNormal.png",
+		"description": "GW 2 Squad Tracker"
+	},
+	"data": {
+		"plugins": [
+			"plugins/npMumbleLink.dll"
+		],
+		"externally_connectable": {
+			"matches": [
+				"https://*.googleapis.com",
+				"https://maps.google.com",
+				"https://*.guildwars2.com",
+				"http://*.buildwars.net"
+			]
+		},
+		"start_window": "index",
+		"windows": {
+			"index": {
+				"file": "files/index.html",
+				"transparent": false,
+				"resizable": true,
+				"show_in_taskbar": true,
+				"size": {
+					"width": 1280,
+					"height": 720
+				},
+				"min_size":{
+					"width": 450,
+					"height": 200
+				}
+			},
+			"config":{
+				"file": "files/config.html",
+				"transparent": false,
+				"resizable": true,
+				"show_in_taskbar": true,
+				"size": {
+					"width": 720,
+					"height": 405
+				},
+				"min_size":{
+					"width": 250,
+					"height": 100
+				}
+			},
+			"help":{
+				"file": "files/help.html",
+				"transparent": false,
+				"resizable": true,
+				"show_in_taskbar": true,
+				"size": {
+					"width": 720,
+					"height": 405
+				},
+				"min_size":{
+					"width": 250,
+					"height": 100
+				}
+			},
+			"matchups":{
+				"file": "files/matchups.html",
+				"transparent": false,
+				"resizable": true,
+				"show_in_taskbar": true,
+				"size": {
+					"width": 720,
+					"height": 405
+				},
+				"min_size":{
+					"width": 620,
+					"height": 200
+				}
+			},
+			"stats":{
+				"file": "files/stats.html",
+				"transparent": false,
+				"resizable": true,
+				"show_in_taskbar": true,
+				"size": {
+					"width": 720,
+					"height": 405
+				},
+				"min_size":{
+					"width": 250,
+					"height": 100
+				}
+			}
+		}
+	}
+}
