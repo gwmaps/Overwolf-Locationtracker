@@ -1,0 +1,168 @@
+#container{
+	overflow-y: hidden;
+}
+
+#map-canvas{
+	height: 100%;
+}
+
+#sidebar{
+	float: right;
+}
+
+#map-controls{
+	position: absolute;
+	top: 28px;
+	right: 0;
+	width: 300px;
+	height: 100%;
+	background: -webkit-gradient(
+		linear, right bottom, left top,
+		color-stop(0.5, rgba(20, 20, 20, 0.8)),
+		color-stop(0.75, rgba(40, 40, 40, 0.75)),
+		color-stop(1, rgba(50, 50, 50, 0.7))
+	);
+}
+
+#map-controls-select{
+	height: 25px;
+}
+
+#map-controls-select > div{
+	transition-property: all;
+	transition-duration: 0.5s;
+	cursor: pointer;
+	width: 33%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#map-controls-select > div:hover{
+	background: rgba(255,255,255, 0.2);
+}
+
+.controls-header{
+	transition-property: all;
+	transition-duration: 0.5s;
+
+	cursor: pointer;
+	font-size: 110%;
+	font-weight: bold;
+	text-align: center;
+	padding: 0.5em;
+	border-top: 1px solid #555;
+}
+
+.controls-header:hover{
+	background: rgba(255,255,255, 0.2);
+}
+
+.controls-body > div{
+	transition-property: all;
+	transition-duration: 0.5s;
+
+	cursor: pointer;
+}
+
+.controls-body img,
+#map-log img{
+	width: 16px;
+	height: 16px;
+	margin: 0 4px;
+	vertical-align: text-bottom;
+}
+
+
+#map-objectives, #map-players, #map-log{
+	height: calc(100% - 25px);
+	overflow-y: auto;
+}
+
+#map-objectives > .controls-body > div > div,
+#map-players > .controls-body > div > div{
+	padding: 0.15em;
+}
+
+
+#map-objectives img.claimed{
+	margin-left: 0;
+}
+
+#map-objectives > .controls-body > div:hover{
+	background: rgba(255,255,255, 0.2);
+}
+
+
+#map-players > .controls-body > div:nth-child(odd){
+	background: rgba(255, 255, 255, 0.1);
+}
+
+#map-players > .controls-body > div:nth-child(even){
+	background: rgba(255, 255, 255, 0.05);
+}
+
+#map-players > .controls-body > div:hover{
+	background: rgba(255,255,255, 0.2);
+}
+
+
+#follow{
+	text-align: center;
+	cursor: pointer;
+	padding: 0.25em;
+	background: rgba(255,255,255, 0.2);
+}
+
+#follow.follow-enabled{
+	background: rgba(197, 26, 20, 0.4);
+}
+
+div.commander{
+	background: rgba(0,0,255,0.2);
+}
+
+div.selected{
+	background: rgba(255,255,255,0.2);
+}
+
+div.commander.selected{
+	background: rgba(0,0,255,0.4);
+}
+
+.log-entry{
+	font-size: 80%;
+}
+
+
+.log-entry img{
+	vertical-align: middle;
+}
+
+.log-entry div:first-of-type {
+	font-family: "Digital-7", Helvetica, Arial, sans-serif;
+	font-style: italic;
+}
+
+.log-entry > div{
+	vertical-align: middle;
+	padding: 2px 5px;
+}
+.log-entry .neutral{
+	color: rgb(30, 30, 30);
+}
+
+.log-entry .objective-text{
+	cursor: pointer;
+	color: rgb(221, 221, 221);
+}
+
+.popup{
+	color: rgb(30, 30, 30);
+}
+
+.popup img{
+	width: 16px;
+	height: 16px;
+	margin-right: 4px;
+	vertical-align: text-bottom;
+}

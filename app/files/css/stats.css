@@ -1,0 +1,108 @@
+body{
+	overflow: visible;
+}
+#container{
+	overflow-y: inherit;
+}
+
+table{
+	width: 100%;
+	border: 0;
+	border-collapse: collapse;
+}
+
+td{
+	padding: 0.25em;
+}
+
+.table-container{
+	margin: 0 1em 1em 1em;
+}
+
+.stats td:nth-of-type(2){
+	width: 2.5em;
+	text-align: right;
+}
+
+.stats td:nth-of-type(3),
+.stats td:nth-of-type(4),
+.stats td:nth-of-type(5),
+.stats td:nth-of-type(6){
+	width: 2em;
+	text-align: center;
+}
+
+.stats td:last-of-type{
+	width: 3.5em;
+	text-align: right;
+}
+
+.stats tr:last-of-type{
+	font-weight: bold;
+}
+
+.stats tr:nth-child(even){
+	background-color: rgba(255, 255, 255, 0.1);
+}
+/*
+		.stats td:nth-child(even){
+			background-color: rgba(255, 255, 255, 0.05);
+		}
+*/
+.toggle{
+	margin: 0 1em;
+	cursor: pointer;
+}
+
+.toggle:first-of-type{
+	margin-top: 1em;
+}
+
+
+.toggle > div{
+	text-align: center;
+	font-weight: bold;
+	font-size: 125%;
+	padding: 0.25em;
+	transition-property: all;
+	transition-duration: 0.5s;
+}
+
+.toggle > div:hover{
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.countdown{
+	font-weight: normal;
+}
+
+.objectives{
+	font-size: 90%;
+}
+
+.objectives td{
+	width: 33%;
+	vertical-align: top;
+	padding: 0;
+}
+
+.objectives td > div > div{
+	padding: 3px 5px;
+}
+
+.objectives td > div:nth-child(even){
+	background-color: rgba(255, 255, 255, 0.1);
+
+}
+
+.objectives img{
+	width: 16px;
+	height: 16px;
+	margin: 0 4px 0 0;
+	vertical-align: text-bottom;
+}
+
+.captime{
+	font-family: "Digital-7", Helvetica, Arial, sans-serif;
+	font-style: italic;
+}

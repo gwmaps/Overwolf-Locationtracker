@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html id="page" dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>GW2 Squad Tracker &bull; Help</title>
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/help.css" />
+</head>
+<body>
+<div id="help-container">
+	<h1 id="header">Help</h1>
+
+	<h1>Quick Start</h1>
+	<p>
+		Go to the configuration, choose your home world and language, enter your GW2 account name (Name.1234) and a channel key,
+		invite your buddies to install this app and share the channel key with them. Profit!
+	</p>
+
+
+	<h1>Configuration</h1>
+
+	<h2>Main Configuration</h2>
+
+	<h3>Language</h3>
+	<p>
+		This setting determines the Language used for the app. Obviously. (defaults to English)
+	</p>
+
+	<h3>Home World</h3>
+	<p>
+		Your home world. This setting determines which match will be used for the match statistics and to display the objective markers in the
+		appropirate colors then. When set to [none], the GW2 WvW API won't be polled and the objectives will appear in neutral state. (defaults to [none])
+	</p>
+
+	<h3>API Ajax Interval</h3>
+	<p>
+		The timespan in seconds between polls to the <a href="http://wiki.guildwars2.com/wiki/API:1/wvw/match_details">GW2 WvW API</a>. (default 5)
+	</p>
+
+	<h3>Stats Interval</h3>
+	<p>
+		The timepan in seconds between stat updates in the "Stats" window. Note: values below 3 seconds may cause some extra CPU load (~10% on a Core2 2.5GHz). (defaults to 3)
+	</p>
+
+
+	<h2>Location Tracker Settings</h2>
+
+	<h3>Account Name</h3>
+	<p>
+		[required setting for location tracking]<br/>
+		Your <b>public</b> Guild Wars 2 display name - the one which is like <i>Name.1234</i>.
+		You can find it ingame or <a href="https://account.guildwars2.com/account">over here</a> on the official GW2 site.
+		It will be used to identify your data in the database. Actually, you could type anything which fits the regex <i>/(^[a-z\s]+.[\d]{4}$)/i</i>
+		(which means: upper/lowercase letters and spaces followed by a dot and 4 numbers) in there but since the GW2 display name is unique, you should use this.<br />
+		<b>PLEASE DO NOT ENTER YOUR GW2 E-MAIL OR ANY PERSONAL DATA IN THERE!</b>
+	</p>
+
+	<h3>Channel Key</h3>
+	<p>
+		[required setting for location tracking]<br/>
+		The channel key is a secret phrase which is shared between the members of a group to identify their members and share their markers on the map.<br />
+		<b>PLEASE DO NOT ENTER YOUR GW2 PASSWORD OR ANY PERSONAL DATA IN THERE!</b>
+	</p>
+
+	<h3>Guild Name</h3>
+	<p>
+		Your exact Guild Name <i>without tag</i> (case-insensitive). The app will do a lookup to the <a href="http://wiki.guildwars2.com/wiki/API:1/guild_details">GW2 guild API</a>
+		to get the correct guild id which then will be sent to the specified URL.
+	</p>
+
+	<h3>Guild ID</h3>
+	<p>
+		This setting is read only. It will be updated on a successful request to the GW2 guild API and is used to determine which guild to display in the sidebar under "Players -> Guild".
+	</p>
+
+	<h3>Location Ajax URL</h3>
+	<p>
+		The URL of the location sender/receiver. You may use <a href="http://gw2location.buildwars.net/">http://gw2location.buildwars.net/</a>
+		or set up your own location receiver (see below).
+	</p>
+
+	<h3>Sender Interval & Enable Sender</h3>
+	<p>
+		The timespan in secons between location updates being sent to the specified server. (defaults to 5) <br/>
+		If location sending is disabled, you and your buddies won't see your marker updating on the map. However, once you sent a location update,
+		your marker will stay on the map for the server side specified time span (usually 2 hours) after the last update.
+	</p>
+
+	<h3>Receiver Interval & Enable Receiver</h3>
+	<p>
+		The timespan in seconds between player locations being received from the specified server. (defaults to 5) <br/>
+		If location receiving is disabled, you won't see any player markers on the map (useful, eh?). However, in a future release i'll implement
+		direct drawing of your own position using the mumble link data instead of the server side data, which also makes realtime position updates possible.
+	</p>
+
+	<h3>Marker Colors</h3>
+	<p>
+		You may specify custom colors for the several marker states and also a guild and commander color. Unfortunately, the GW2 Mumble Link data doesn't yet
+		provide the "new" commander icon states, just a boolean value, so it's not yet possible to automatically determine a commanders color.
+	</p>
+
+
+	<h1>Set up your own backend server</h1>
+	<p>
+		Oooookay. First of all, have a look at the backend code in my GitHub repo over here:
+		<a href="https://github.com/codemasher/Overwolf-Locationtracker/tree/master/backend">https://github.com/codemasher/Overwolf-Locationtracker/tree/master/backend</a>.
+		If you only want to have a backend running, just copy the files to your webserver, create the SQL tables, modify the <i>inc/config.inc.php</i> and you're done.
+		Oh, and make sure that your server is running PHP 5.4+. I won't support lower PHP versions anymore since PHP 5.3 reached end-of-life and will no longer receive updates.
+	</p>
+
+
+	<h2>Sender part</h2>
+	<p>
+		If you want to know what's going on behind the scenes, want to build your own implementation of a location sender which should communicate with this backend
+		or just want to play around with it, i've got something for you.
+	</p>
+
+	<p>
+		This is the object which is being sent to the server. Note that GW2's units are in inches, while Mumble (and any other serious service) uses meters
+		or at least the metric unit system, so these values need to be recalculated. Also note the mod function to calculate the current view angle. It returns the value as +CW.
+		GW2 holds a JSON string in Mumbles context data which is here being evaluated using JSON.parse().
+		Account name, guild ID and channel key are actual config values, which your app should then provide.
+	</p>
+	<pre><code class="language-javascript">var mod = function(a, b){
+	return a < 0 ? a+b : a;
+};
+
+// GW2 Location sender compatible data block
+var data = {
+	avatar_position: [
+		Math.round(mumble.avatar.position.x*39.3701),
+		Math.round(mumble.avatar.position.z*39.3701)
+	],
+	avatar_front: Math.round(mod(Math.atan2(mumble.avatar.front.z, mumble.avatar.front.x)*180/Math.PI, 360)),
+	character_data: JSON.parse(characterData),
+	account_name: accountName,
+	guild_id: guildID,
+	channel_id: channelKeySHA1,
+};</code></pre>
+
+	<p>
+		The data is being sent via a POST request to the backend which should contain one parameter: <i>data</i>
+		that holds a JSON representation of the previous data block. This is what the value looks like:
+	</p>
+	<pre><code class="language-javascript">{
+	"avatar_position": [183, 18946],
+	"avatar_front": 130,
+	"character_data": {
+		"commander": false,
+		"map_id": 95,
+		"name": "Skin Receiver",
+		"profession": 6,
+		"team_color_id": 55,
+		"world_id": 2005
+	},
+	"account_name": "smiley.1438",
+	"guild_id": "75FD83CF-0C45-4834-BC4C-097F93A487AF",
+	"channel_id": "913a73b565c8e2c8ed94497580f619397709b8b6",
+}</code></pre>
+	<p>
+		When everything was OK and the data passed the several checks, you'll receive a message along with the actual values which have been inserted to the database.
+	</p>
+
+	<h2>Receiver part</h2>
+	<p>
+		So you have stored the data successfully in your database - now it's time to receive the values. Just send a POST request with a parameter
+		<i>json</i> and a value like the following example to the backend:
+	</p>
+	<pre><code class="language-javascript">{
+	"get": "playerdata",
+	"key": "913a73b565c8e2c8ed94497580f619397709b8b6",
+	"continent": 2,
+	"lang": "en"
+}</code></pre>
+
+	<p>
+		You will then receive a JSON string like the following where the SHA1 of the account name represents the identifier for each player matching your request:
+	</p>
+	<pre><code class="language-javascript">{
+	"54978e6a09a2588f2bc3017dd8dcf8c0417eaab6": {
+		"charname": "Skin Receiver",
+		"commander": 0,
+		"profession": 6,
+		"state": 3,
+		"guild": {
+			"id": "75FD83CF-0C45-4834-BC4C-097F93A487AF",
+			"name": "Veterans Of Lions Arch",
+			"tag": "LA"
+		},
+		"continent": 2,
+		"world": {
+			"id": 2005,
+			"name": "Ring of Fire"
+		},
+		"map": {
+			"id": 95,
+			"name": "%s Borderlands"
+		},
+		"pos": [6918, 12521],
+		"angle": -130,
+		"time": 1410480081
+	}
+}</code></pre>
+
+
+	<h1>Known Problems</h1>
+
+	<h2>Markers wrap along the x-axis</h2>
+	<p>
+		Due to limitations of the Google Maps API, it may occur that the map marker icons wrap along the x-axis on low zoom levels.
+		I don't know of a fix for this yet but i'm happy for any hints or solutions. However, i plan to port this application to
+		<a href="http://leafletjs.com/">leaflet.js</a> one day, where this problem doesn't exist.
+	</p>
+	<p>
+		"Why didn't you use leaflet.js in first place then?" you ask?<br/>
+		Well, leaflet is nice and has native support for pixel maps and all but the main problem is that you have to rely on a couple of 3rd party plugins for it
+		to get the same functionality which Google Maps provides out-of-the-box (most importantly marker management/options, custom tile getter etc.) -
+		also GMaps is damn fast and you hardly find any bugs.
+	</p>
+
+	<h2>The application "hangs" on startup</h2>
+	<p>
+		Once you select a home world, the app receives the most recent match data for your home world and also updates the guild data for the current match.
+		Because of some unintended behaviour of asynchronous requests, the requests to the guild API are done synchronous, which means they block loading for a while.
+		Due to a limitation in the <a href="http://wiki.guildwars2.com/wiki/API:1/guild_details">GW2 guild API</a> it's currently impossible
+		to send bulk requests. This will (hopefully) change with the upcoming version 2 of the API.
+	</p>
+
+	<h2>The values under "Stats" differ from those in the main window</h2>
+	<p>
+		The main window stats are built from the data which is received from the GW2 API. This data is then being written to the local storage for use in the "Stats" window
+		to avoid redundant requests to the API. This means, the values under "Stats" aren't live stats and will therefore be a couple of seconds "behind" the live data.
+	</p>
+
+
+	<h1>About</h1>
+
+	<p>
+		This Application was created from the initial example on my <a href="https://github.com/codemasher/gw2api-tools">GW2 API GitHub repo</a> and the
+		<a href="https://forum-en.guildwars2.com/forum/community/api/Gw2-Location-Tracker/2379754">Location tracker</a> i've built from it.
+		However, it required to download an <a href="https://gw2apicpp.codeplex.com/">extra application</a> in order to send the Mumble link data to a server,
+		so i didn't release an Overwolf app to date. I didn't want the players to download potentially insecure 3rd party application. This would change when user
+		<a href="https://forum-en.guildwars2.com/members/meh-6784">"meh"</a> released an <a href="https://github.com/meh/npapi-mumble-link">NPAPI plugin</a>
+		for Overwolf to read Mumble's position data without a 3rd party app. So, here it is.
+	</p>
+
+	<p>
+		You say HAX!? No seriously, it's no hack at all. It should be made clear that <b>using this tool is not illegal and would not result in account bans</b>.
+		In fact, it was encouraged by former ArenaNet programmer <a href="https://forum-en.guildwars2.com/members/Cliff-Spradlin-3512">Cliff Spradlin</a> in
+		<a href="https://forum-en.guildwars2.com/forum/community/api/Map-API-Mumble-Mashup/2256444">a post</a> on the official GW2 forums.
+		How does it work? Guild Wars 2 supports <a href="http://mumble.sourceforge.net/Positional-Audio">Mumble's positional audio</a> using the
+		<a href="http://mumble.sourceforge.net/Link">Mumble Link API</a> which could also be used by any other program.
+	</p>
+
+	<h1>Thanks</h1>
+	<p>
+		<img src="img/purple_llama.png" alt="purple llama" style="float: right; width: 40px; height: 40px;" />
+		Jessie (purple llama) for the app images. Really, thanks purp <3<br />
+		Pablo for the spanish and french translations<br />
+		Juri (Heimdall) for the initial version of the location sender<br />
+		The people in the <a href="http://wiki.guildwars2.com/wiki/GW2W:IRC">#gww IRC channel</a><br />
+		The friendly and helpful <a href="https://forum-en.guildwars2.com/forum/community/api/">GW2 developer community</a>
+	</p>
+
+	<h1>Used Libraries & Stuff</h1>
+	<p>
+		<a href="http://prototypejs.org/">prototype</a> (jQuery? What's jQuery?)<br />
+		<a href="https://script.aculo.us/">script.aculo.us</a><br />
+		<a href="http://phpjs.org/">php.js</a><br />
+		<a href="https://github.com/jdarling/Object.observe">Object.observe polyfill</a><br />
+		<a href="http://jscolor.com/">JSColor</a><br />
+		<a href="http://prismjs.com/">prism.js</a>
+		<a href="https://developers.google.com/maps/web/">Google Maps Javascript API</a><br />
+		<a href="https://github.com/meh/npapi-mumble-link">NPAPI Mumble link plugin</a><br />
+		<a href="http://www.styleseven.com/">digital-7 font</a>
+	</p>
+
+	<h1>Legal Stuff</h1>
+	<p style="font-size: 75%">
+		Guild Wars 2 Squad Tracker for Overwolf<br/>
+		&copy; 2014 Smiley <a href="mailto:smiley@buildwars.net">smiley@buildwars.net</a>.<br/>
+		Guild Wars 2 Squad Tracker is licensed under <a href="http://opensource.org/licenses/mit-license.php">The MIT License</a>,
+		source available under <a href="https://github.com/codemasher/Overwolf-Locationtracker">https://github.com/codemasher/Overwolf-Locationtracker</a>.
+	</p>
+
+	<p style="font-size: 75%">
+		Guild Wars Copyright and Trademark Information<br />
+		&copy; 2012 ArenaNet, Inc. All rights reserved. NCsoft, the interlocking NC logo, ArenaNet, Arena.net, Guild Wars,
+		Guild Wars Factions, Factions, Guild Wars Nightfall, Nightfall, Guild Wars: Eye of the North, Eye of the North,
+		Guild Wars 2, and all associated logos and designs are trademarks or registered trademarks of NCsoft Corporation.
+		All other trademarks are the property of their respective owners.
+	</p>
+</div>
+<script src="js/vendor/prototype.js"></script>
+<script src="js/vendor/scriptaculous.js"></script>
+<script src="js/vendor/prism.js"></script>
+<script src="js/help.js"></script>
+</body>
+</html>

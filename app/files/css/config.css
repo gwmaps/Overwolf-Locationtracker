@@ -1,0 +1,98 @@
+form#config{
+	text-align: left;
+	margin: 0 1em 1em 1em;
+}
+
+fieldset{
+	background: rgba(255, 255, 255, 0.1);
+	border: none;
+	margin-bottom: 10px;
+	padding: 5px 7px;
+	/*border-radius: 7px;*/
+}
+
+fieldset:last-of-type{
+	margin-bottom: 0;
+}
+
+fieldset > legend{
+	font-size: 110%;
+	font-weight: bold;
+	padding-bottom: 0.5em;
+	text-shadow: 0 1px 1px #000;
+}
+
+ol{
+	padding: 0;
+}
+
+ol > li{
+	background: rgba(255, 255, 255, 0.1);
+	line-height: 30px;
+	list-style: none;
+	padding: 5px 10px;
+	/*border: 1px solid rgba(255, 255, 255, 0.5);
+	border-radius: 5px;
+	margin-bottom: 2px;*/
+}
+
+label:not(.radio){
+	transition-property: all;
+	transition-duration: 0.5s;
+	float: left;
+	width: 12em;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+label:hover{
+	color: #ff9c31;
+}
+
+input:not([type="radio"]):not([type="checkbox"]), select{
+	transition-property: all;
+	transition-duration: 0.5s;
+	width: 20em;
+	border: none;
+	/*border-radius: 3px;*/
+	outline: none;
+	padding: 2px;
+}
+
+input, select{
+	background: rgba(255, 255, 255, 0.9);
+}
+
+input:focus, select:focus{
+	background: #FCFC6C;
+}
+
+.radio{
+	cursor: pointer;
+	margin-right: 1em;
+}
+
+.radio > img{
+	cursor: pointer;
+	vertical-align: middle;
+}
+
+.radio > input[type="radio"]{
+	cursor: pointer;
+	vertical-align: middle;
+	margin: 0 0.5em;
+}
+
+form > footer {
+	text-align: center;
+	padding: 1em;
+}
+
+.check{
+
+}
+
+#header{
+	font-size: 175%;
+	text-align: center;
+}

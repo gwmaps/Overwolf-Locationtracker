@@ -1,0 +1,311 @@
+@import url("https://d1h9a8s8eodvjz.cloudfront.net/fonts/menomonia/08-02-12/menomonia.css");
+@import url("https://d1h9a8s8eodvjz.cloudfront.net/fonts/menomonia/08-02-12/menomonia-italic.css");
+
+@font-face {
+	font-family: Digital-7;
+	src: url('digital-7-mono.ttf');
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: Digital-7;
+	src: url('digital-7-mono-italic.ttf');
+	font-style: italic;
+	font-weight: 400;
+}
+
+html, body{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+}
+
+html{
+	opacity: 1;
+}
+
+body{
+	background-color: #0e0e0e;
+	font: normal 100%/1.25 'Menomonia', 'Arial', sans-serif;
+	color: #bbb;
+	overflow: hidden;
+}
+
+/* form styles from normalize.css */
+button, input, textarea{
+	box-sizing: border-box;
+}
+
+fieldset{
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+legend{
+	border: 0;
+	padding: 0;
+}
+
+button, input, select, textarea{
+	font-family: inherit;
+	font-size: 100%;
+	margin: 0;
+}
+
+button, input{
+	line-height: normal;
+}
+
+button, select{
+	text-transform: none;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"]{
+	-webkit-appearance: button;
+	cursor: pointer;
+}
+
+button[disabled], html input[disabled]{
+	cursor: default;
+}
+
+input[type="checkbox"], input[type="radio"]{
+	box-sizing: border-box;
+	padding: 0;
+}
+
+#overlay {
+	background: -webkit-gradient(
+		linear, right bottom, left top,
+		color-stop(0.5, rgba(20, 20, 20, 0.8)),
+		color-stop(0.75, rgba(40, 40, 40, 0.75)),
+		color-stop(1, rgba(50, 50, 50, 0.7))
+	);
+}
+
+#overlay-inner {
+	min-width: 500px;
+}
+
+#overlay-content{
+	border-radius: 5px;
+	padding: 10px;
+	overflow-y:auto;
+	box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.6);
+}
+
+#container{
+	overflow-y: auto;
+	height: 100%
+}
+
+a{
+	text-decoration: none;
+	color: #e3e3e3;
+	cursor: pointer;
+	transition-property: all;
+	transition-duration: 0.5s;
+}
+
+.table-row{
+	display: table;
+	width: 100%;
+}
+
+.table-cell{
+	display: table-cell;
+	overflow: hidden;
+	vertical-align: top;
+	width: auto;
+}
+
+#menu{
+	font-size: 110%;
+}
+
+#nav{
+	height: 25px;
+	background: #222;
+}
+
+#nav > a,
+#move > a,
+#close > a{
+	display: inline-block;
+	padding: 0 0.5em;
+	vertical-align: middle;
+	height: 100%;
+}
+
+
+#move, #close{
+	text-align: center;
+}
+
+#move{
+	background: #333;
+	width: 50px;
+}
+
+#close{
+	background: #800000;
+	width: 20px;
+	font-weight: bold;
+}
+
+#opacity{
+	width: 110px;
+	text-align: center;
+}
+
+#opacity > div{
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+}
+
+#move > a{
+	cursor: move;
+}
+
+#close > a{
+	cursor: pointer;
+}
+
+#resize{
+	background: #555;
+	width: 10px;
+	cursor: nesw-resize;
+}
+
+#close > a:active, #close > a:hover{
+	background: #b00000;
+	color: #eee;
+}
+
+#nav > a:active, #nav > a:hover,
+#move > a:active, #move > a:hover,
+#resize:hover{
+	background: #777;
+	color: #eee;
+}
+
+#mumble{
+	width: 0;
+	height: 0;
+	margin: 0;
+	padding: 0;
+}
+
+h1{
+	font-size: 150%;
+	font-weight: bold;
+	margin: 1em 0 0.75em 0
+}
+
+h2{
+	font-size: 125%;
+	margin: 1em 0 0.5em 0;
+}
+
+h3{
+	font-size: 100%;
+	margin: 0.75em 0 0.5em 0;
+}
+
+
+button{
+	background-color: rgba(128, 128, 128, 1);
+	border: none;
+	/*border-radius: 5px;*/
+	margin: 0.5em;
+	padding: 0.25em 1em;
+	transition-property: all;
+	transition-duration: 0.5s;
+}
+
+button:hover{
+	background-color: rgba(204, 204, 204, 1);
+	cursor: pointer;
+}
+
+/* slider controls */
+.slider {
+	width:100px;
+	height:100%;
+	padding:0;
+	background:#555;
+	position: relative;
+}
+
+.slider > .handle {
+	width:4px;
+	height:100%;
+	background:#800000;
+	cursor:w-resize;
+	position:absolute;
+	top:0;
+}
+
+.slider > .handle:hover{
+	background: #b00000;
+}
+
+
+.red{
+	background: rgba(197, 26, 20, 0.4);
+}
+
+.blue{
+	background: rgba(11, 75, 189, 0.4);
+}
+
+.green{
+	background: rgba(24, 207, 24, 0.4);
+}
+
+.neutral{
+	background: rgba(255, 255, 255, 0.4);
+}
+
+
+.red-text{
+	color: rgb(197, 26, 20);
+}
+
+.blue-text{
+	color: rgb(11, 75, 189);
+}
+
+.green-text{
+	color: rgb(24, 207, 24);
+}
+
+.neutral-text{
+	color: rgb(204, 204, 204);
+}
+
+
+.countdown{
+	font-family: "Digital-7", Helvetica, Arial, sans-serif;
+	font-style: italic;
+	margin-left: 0.5em;
+}
+
+.red .countdown{
+	color: #ff0000;
+}
+
+.blue .countdown{
+	color: #00aaff;
+}
+
+.green .countdown{
+	color: #00ff00;
+}
+
+

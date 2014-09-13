@@ -1,0 +1,105 @@
+#overlay-inner{
+	overflow-y: auto;
+}
+
+#ministats{
+	background: rgba(0, 0, 0, 0.5);
+	padding: 0.5em;
+	font-size: 80%;
+}
+
+.region-header{
+	font-weight: bold;
+	text-align: center;
+	padding: 0.1em 0;
+	margin: 1em 1em 0 1em;
+}
+
+.region-header > span{
+	font-size: 120%;
+}
+
+.region-countdown{
+	font-family: "Digital-7", Helvetica, Arial, sans-serif;
+	font-style: italic;
+	text-align: center;
+	margin: 0 1em;
+}
+
+.region-countdown > span{
+	font-size: 90%;
+}
+
+.matchup-table{
+	text-align: center;
+	margin: 0 1em 1em 1em;
+}
+
+.matchup-table > .table-row{
+	cursor: pointer;
+}
+
+.matchup-table > .table-row:nth-child(even){
+	background-color: rgba(255, 255, 255, 0.05);
+}
+
+.matchup-table > .table-row:hover{
+	background-color: rgba(255, 255, 255, 0.15);
+}
+
+.matchup-table > .table-row > .table-cell{
+	width: 32%;
+	padding: 0.15em;
+}
+
+.matchup-table > .table-row > .table-cell:first-of-type{
+	width: 4%;
+	min-width: 20px;
+}
+
+.stats-table{
+	text-align: left;
+	width: 100%;
+	border: 0;
+	border-collapse: collapse;
+}
+
+.stats-table tr:first-of-type,
+.stats-table tr:nth-of-type(2),
+.stats-table tr:last-of-type{
+	font-weight: bold;
+}
+
+.stats-table tr:first-of-type{
+	font-size: 125%;
+}
+
+.stats-table td{
+	padding: 0.2em 0.4em;
+	text-align: center;
+}
+
+.stats-table tr > td:first-of-type{
+	text-align: left;
+}
+
+.stats-table tr:first-of-type > td:first-of-type{
+	text-align: center;
+}
+
+.stats-table tr > td:nth-of-type(2),
+.stats-table tr > td:nth-of-type(7){
+	text-align: right;
+}
+
+.stats-table tr:nth-of-type(2) img{
+	vertical-align: middle;
+}
+
+.stats-table tr:nth-child(even){
+	background-color: rgba(255, 255, 255, 0.05);
+}
+
+.stats-table td:nth-child(even){
+	background-color: rgba(255, 255, 255, 0.05);
+}

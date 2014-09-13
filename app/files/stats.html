@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html id="page" dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>GW2 Squad Tracker &bull; Stats</title>
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="stylesheet" href="css/stats.css" />
+</head>
+<body>
+<div id="container">
+	<!-- todo: cleanup -->
+	<div id="stats-toggle-overall" class="toggle neutral" data-toggle="tc-stats-overall"><div></div></div>
+	<div class="table-container" id="tc-stats-overall">
+		<table class="overall" id="stats-overall">
+			<tr id="overall-green" class="green">
+				<td class="name"></td>
+				<td class="score"></td>
+				<td class="income"></td>
+			</tr>
+			<tr id="overall-blue" class="blue">
+				<td class="name"></td>
+				<td class="score"></td>
+				<td class="income"></td>
+			</tr>
+			<tr id="overall-red" class="red">
+				<td class="name"></td>
+				<td class="score"></td>
+				<td class="income"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="stats-toggle-green" class="toggle green" data-toggle="tc-stats-green"><div></div></div>
+	<div class="table-container" id="tc-stats-green">
+		<table class="stats" id="stats-green">
+			<tr>
+				<td class="green"></td>
+				<td class="green"></td>
+				<td class="green"><img src="img/wvw/camp_l.png" alt=""/></td>
+				<td class="green"><img src="img/wvw/tower_l.png" alt=""/></td>
+				<td class="green"><img src="img/wvw/keep_l.png" alt=""/></td>
+				<td class="green"><img src="img/wvw/castle_l.png" alt=""/></td>
+				<td class="green"></td>
+			</tr>
+			<tr>
+				<td class="name GreenHome green"></td>
+				<td class="income GreenHome green"></td>
+				<td class="camp GreenHome green"></td>
+				<td class="tower GreenHome green"></td>
+				<td class="keep GreenHome green"></td>
+				<td class="castle GreenHome green"></td>
+				<td class="score GreenHome green"></td>
+			</tr>
+			<tr>
+				<td class="name BlueHome blue"></td>
+				<td class="income BlueHome green"></td>
+				<td class="camp BlueHome green"></td>
+				<td class="tower BlueHome green"></td>
+				<td class="keep BlueHome green"></td>
+				<td class="castle BlueHome green"></td>
+				<td class="score BlueHome green"></td>
+			</tr>
+			<tr>
+				<td class="name RedHome red"></td>
+				<td class="income RedHome green"></td>
+				<td class="camp RedHome green"></td>
+				<td class="tower RedHome green"></td>
+				<td class="keep RedHome green"></td>
+				<td class="castle RedHome green"></td>
+				<td class="score RedHome green"></td>
+			</tr>
+			<tr>
+				<td class="name Center neutral"></td>
+				<td class="income Center green"></td>
+				<td class="camp Center green"></td>
+				<td class="tower Center green"></td>
+				<td class="keep Center green"></td>
+				<td class="castle Center green"></td>
+				<td class="score Center green"></td>
+			</tr>
+			<tr>
+				<td class="name Total green"></td>
+				<td class="income Total green"></td>
+				<td class="camp Total green"></td>
+				<td class="tower Total green"></td>
+				<td class="keep Total green"></td>
+				<td class="castle Total green"></td>
+				<td class="score Total green"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="stats-toggle-blue" class="toggle blue" data-toggle="tc-stats-blue"><div></div></div>
+	<div class="table-container" id="tc-stats-blue">
+		<table class="stats" id="stats-blue">
+			<tr>
+				<td class="blue"></td>
+				<td class="blue"></td>
+				<td class="blue"><img src="img/wvw/camp_l.png" alt=""/></td>
+				<td class="blue"><img src="img/wvw/tower_l.png" alt=""/></td>
+				<td class="blue"><img src="img/wvw/keep_l.png" alt=""/></td>
+				<td class="blue"><img src="img/wvw/castle_l.png" alt=""/></td>
+				<td class="blue"></td>
+			</tr>
+			<tr>
+				<td class="name GreenHome green"></td>
+				<td class="income GreenHome blue"></td>
+				<td class="camp GreenHome blue"></td>
+				<td class="tower GreenHome blue"></td>
+				<td class="keep GreenHome blue"></td>
+				<td class="castle GreenHome blue"></td>
+				<td class="score GreenHome blue"></td>
+			</tr>
+			<tr>
+				<td class="name BlueHome blue"></td>
+				<td class="income BlueHome blue"></td>
+				<td class="camp BlueHome blue"></td>
+				<td class="tower BlueHome blue"></td>
+				<td class="keep BlueHome blue"></td>
+				<td class="castle BlueHome blue"></td>
+				<td class="score BlueHome blue"></td>
+			</tr>
+			<tr>
+				<td class="name RedHome red"></td>
+				<td class="income RedHome blue"></td>
+				<td class="camp RedHome blue"></td>
+				<td class="tower RedHome blue"></td>
+				<td class="keep RedHome blue"></td>
+				<td class="castle RedHome blue"></td>
+				<td class="score RedHome blue"></td>
+			</tr>
+			<tr>
+				<td class="name Center neutral"></td>
+				<td class="income Center blue"></td>
+				<td class="camp Center blue"></td>
+				<td class="tower Center blue"></td>
+				<td class="keep Center blue"></td>
+				<td class="castle Center blue"></td>
+				<td class="score Center blue"></td>
+			</tr>
+			<tr>
+				<td class="name Total blue"></td>
+				<td class="income Total blue"></td>
+				<td class="camp Total blue"></td>
+				<td class="tower Total blue"></td>
+				<td class="keep Total blue"></td>
+				<td class="castle Total blue"></td>
+				<td class="score Total blue"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="stats-toggle-red" class="toggle red" data-toggle="tc-stats-red"><div></div></div>
+	<div class="table-container" id="tc-stats-red">
+		<table class="stats" id="stats-red">
+			<tr>
+				<td class="red"></td>
+				<td class="red"></td>
+				<td class="red"><img src="img/wvw/camp_l.png" alt=""/></td>
+				<td class="red"><img src="img/wvw/tower_l.png" alt=""/></td>
+				<td class="red"><img src="img/wvw/keep_l.png" alt=""/></td>
+				<td class="red"><img src="img/wvw/castle_l.png" alt=""/></td>
+				<td class="red"></td>
+			</tr>
+			<tr>
+				<td class="name GreenHome green"></td>
+				<td class="income GreenHome red"></td>
+				<td class="camp GreenHome red"></td>
+				<td class="tower GreenHome red"></td>
+				<td class="keep GreenHome red"></td>
+				<td class="castle GreenHome red"></td>
+				<td class="score GreenHome red"></td>
+			</tr>
+			<tr>
+				<td class="name BlueHome blue"></td>
+				<td class="income BlueHome red"></td>
+				<td class="camp BlueHome red"></td>
+				<td class="tower BlueHome red"></td>
+				<td class="keep BlueHome red"></td>
+				<td class="castle BlueHome red"></td>
+				<td class="score BlueHome red"></td>
+			</tr>
+			<tr>
+				<td class="name RedHome red"></td>
+				<td class="income RedHome red"></td>
+				<td class="camp RedHome red"></td>
+				<td class="tower RedHome red"></td>
+				<td class="keep RedHome red"></td>
+				<td class="castle RedHome red"></td>
+				<td class="score RedHome red"></td>
+			</tr>
+			<tr>
+				<td class="name Center neutral"></td>
+				<td class="income Center red"></td>
+				<td class="camp Center red"></td>
+				<td class="tower Center red"></td>
+				<td class="keep Center red"></td>
+				<td class="castle Center red"></td>
+				<td class="score Center red"></td>
+			</tr>
+			<tr>
+				<td class="name Total red"></td>
+				<td class="income Total red"></td>
+				<td class="camp Total red"></td>
+				<td class="tower Total red"></td>
+				<td class="keep Total red"></td>
+				<td class="castle Total red"></td>
+				<td class="score Total red"></td>
+			</tr>
+		</table>
+	</div>
+
+	<!--
+	<div id="stats-toggle-objective-Center" class="toggle neutral" data-toggle="tc-stats-objective-center"><div></div></div>
+	<div class="table-container" id="tc-stats-objective-center">
+		<table class="objectives Center" id="stats-objectives-center">
+			<tr>
+				<td class="green"></td>
+				<td class="blue"></td>
+				<td class="red"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="stats-toggle-objective-GreenHome" class="toggle green" data-toggle="tc-stats-objective-green"><div></div></div>
+	<div class="table-container" id="tc-stats-objective-green">
+		<table class="objectives GreenHome" id="stats-objectives-green">
+			<tr>
+				<td class="green"></td>
+				<td class="blue"></td>
+				<td class="red"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="stats-toggle-objective-BlueHome" class="toggle blue" data-toggle="tc-stats-objective-blue"><div></div></div>
+	<div class="table-container" id="tc-stats-objective-blue">
+		<table class="objectives BlueHome" id="stats-objectives-blue">
+			<tr>
+				<td class="green"></td>
+				<td class="blue"></td>
+				<td class="red"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="stats-toggle-objective-RedHome" class="toggle red" data-toggle="tc-stats-objective-red"><div></div></div>
+	<div class="table-container" id="tc-stats-objective-red">
+		<table class="objectives RedHome" id="stats-objectives-red">
+			<tr>
+				<td class="green"></td>
+				<td class="blue"></td>
+				<td class="red"></td>
+			</tr>
+		</table>
+	</div>
+	-->
+
+	<div id="stats-toggle-objective" class="toggle neutral" data-toggle="tc-stats-objective"><div></div></div>
+	<div class="table-container" id="tc-stats-objective">
+		<table class="objectives" id="stats-objectives">
+			<tr>
+				<td class="green"></td>
+				<td class="blue"></td>
+				<td class="red"></td>
+			</tr>
+		</table>
+	</div>
+	<div style="height: 1px;"><!-- force the overwolf browser to display the margin of the previous container... --></div>
+</div>
+<script src="js/vendor/prototype.js"></script>
+<script src="js/vendor/scriptaculous.js"></script>
+<script src="js/vendor/phpjs.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/common.js"></script>
+<script src="js/stats.js"></script>
+</body>
+</html>

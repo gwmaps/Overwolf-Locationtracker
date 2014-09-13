@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html id="page" dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>GW2 Squad Tracker &bull; Config</title>
+	<link rel="stylesheet" href="css/style.css"/>
+	<link rel="stylesheet" href="css/config.css"/>
+</head>
+<body>
+<div id="container">
+	<h1 id="header">Configuration</h1>
+	<form id="config">
+		<fieldset>
+			<legend>Main settings</legend>
+			<ol>
+				<li>
+					<label></label>
+					<div id="lang" style="display:inline-block;">
+						<label for="lang_de" class="radio" title="Deutsch"><img src="img/flags/de.png" alt="de"><input id="lang_de" type="radio" name="lang" value="de"/></label>
+						<label for="lang_en" class="radio" title="English"><img src="img/flags/en.png" alt="en"><input id="lang_en" type="radio" name="lang" value="en"/></label>
+						<label for="lang_es" class="radio" title="Español"><img src="img/flags/es.png" alt="es"><input id="lang_es" type="radio" name="lang" value="es"/></label>
+						<label for="lang_fr" class="radio" title="Français"><img src="img/flags/fr.png" alt="fr"><input id="lang_fr" type="radio" name="lang" value="fr"/></label>
+					</div>
+				</li>
+				<li>
+					<label for="worldID"></label>
+					<select id="worldID" name="worldID" size="7"></select>
+				</li>
+			</ol>
+			<ol>
+				<li>
+					<label for="ajaxInterval"></label>
+					<input id="ajaxInterval" name="ajaxInterval" type="number" placeholder="" min="5" max="120" value="" style="position:relative;left:0;"/>
+				</li>
+				<li>
+					<label for="statsInterval"></label>
+					<input id="statsInterval" name="statsInterval" type="number" placeholder="" min="1" max="120" value="" style="position:relative;left:0;"/>
+				</li>
+
+			</ol>
+		</fieldset>
+		<fieldset>
+			<legend>Location tracker settings</legend>
+
+			<ol>
+				<li>
+					<label for="accname"></label>
+					<input id="accname" name="accname" type="text" placeholder="" value=""/>
+				</li>
+				<li>
+					<label for="channelKey"></label>
+					<input id="channelKey" name="channelKey" type="text" placeholder="" value=""/>
+				</li>
+				<li>
+					<label for="guildName"></label>
+					<input id="guildName" name="guildName" type="text" placeholder="" value=""/>
+				</li>
+				<li>
+					<label for="guildID"></label>
+					<input readonly id="guildID" name="guildID" type="text" placeholder="" value=""/>
+				</li>
+			</ol>
+			<ol>
+				<li>
+					<label for="ajaxUrl"></label>
+					<input id="ajaxUrl" name="ajaxUrl" type="text" placeholder="" value=""/>
+				</li>
+				<li>
+					<label for="enableSender">a</label>
+					<input class="check" id="enableSender" name="enableSender" value="true" type="checkbox"/>
+				</li>
+				<li>
+					<label for="senderInterval"></label>
+					<input id="senderInterval" name="senderInterval" type="number" placeholder="" min="5" max="120" value="" style="position:relative;left:0;"/>
+				</li>
+				<li>
+					<label for="enableReceiver">a</label>
+					<input class="check" id="enableReceiver" name="enableReceiver" value="true" type="checkbox"/>
+				</li>
+				<li>
+					<label for="receiverInterval"></label>
+					<input id="receiverInterval" name="receiverInterval" type="number" placeholder="" min="5" max="120" value="" style="position:relative;left:0;"/>
+				</li>
+			</ol>
+			<ol>
+				<li>
+					<label for="colorSelf"></label>
+					<input readonly id="colorSelf" class="color" name="colorSelf" type="text" placeholder="" value="" />
+				</li>
+				<li>
+					<label for="colorOnline"></label>
+					<input readonly id="colorOnline" class="color" name="colorOnline" type="text" placeholder="" value="" />
+				</li>
+				<li>
+					<label for="colorAway"></label>
+					<input readonly id="colorAway" class="color" name="colorAway" type="text" placeholder="" value="" />
+				</li>
+				<li>
+					<label for="colorAfk"></label>
+					<input readonly id="colorAfk" class="color" name="colorAfk" type="text" placeholder="" value="" />
+				</li>
+				<li>
+					<label for="colorOffline"></label>
+					<input readonly id="colorOffline" class="color" name="colorOffline" type="text" placeholder="" value="" />
+				</li>
+				<li>
+					<label for="colorCommander"></label>
+					<input readonly id="colorCommander" class="color" name="colorCommander" type="text" placeholder="" value="" />
+				</li>
+				<li>
+					<label for="colorGuild"></label>
+					<input readonly id="colorGuild" class="color" name="colorGuild" type="text" placeholder="" value="" />
+				</li>
+			</ol>
+		</fieldset>
+<!--	<fieldset>
+			<legend>TeamSpeak settings</legend>
+		</fieldset>-->
+		<fieldset>
+			<legend>Misc</legend>
+			<button id="clear_matchdata"></button>
+			<br/>
+			<button id="reset_config"></button>
+		</fieldset>
+		<footer>
+			<div id="message"></div>
+			<button id="save" type="submit"></button>
+			<button id="cancel"></button>
+		</footer>
+	</form>
+</div>
+<script src="js/vendor/prototype.js"></script>
+<script src="js/vendor/scriptaculous.js"></script>
+<script src="js/vendor/phpjs.js"></script>
+<script src="js/vendor/jscolor.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/common.js"></script>
+<script src="js/config.js"></script>
+</body>
+</html>

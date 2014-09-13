@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html id="page" dir="ltr" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="UTF-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>GW2 Squad Tracker</title>
+	<link rel="stylesheet" href="css/style.css"/>
+	<link rel="stylesheet" href="css/index.css"/>
+</head>
+<body>
+<div id="container">
+	<div id="map-canvas"></div>
+	<div id="map-controls">
+		<div id="map-controls-select" class="table-row">
+			<div id="tab-objectives" class="table-cell selected" data-toggle="map-objectives"></div>
+			<div id="tab-players" class="table-cell" data-toggle="map-players"></div>
+			<div id="tab-log" class="table-cell" data-toggle="map-log"></div>
+		</div>
+		<div id="map-objectives">
+			<div id="center-header" class="controls-header">&nbsp;</div>
+			<div id="Center" class="controls-body"></div>
+			<div id="green-header" class="controls-header">&nbsp;</div>
+			<div id="GreenHome" class="controls-body"></div>
+			<div id="red-header" class="controls-header">&nbsp;</div>
+			<div id="RedHome" class="controls-body"></div>
+			<div id="blue-header" class="controls-header">&nbsp;</div>
+			<div id="BlueHome" class="controls-body"></div>
+		</div>
+		<div id="map-players" style="display: none;">
+			<div id="me-header" class="controls-header">&nbsp;me</div>
+			<div id="me" class="controls-body"></div>
+			<div id="guild-header" class="controls-header">&nbsp;guild</div>
+			<div id="guild" class="controls-body"></div>
+			<div id="others-header" class="controls-header">&nbsp;others</div>
+			<div id="others" class="controls-body"></div>
+		</div>
+		<div id="map-log" style="display: none;"></div>
+	</div>
+</div>
+<script src="js/vendor/prototype.js"></script>
+<script src="js/vendor/scriptaculous.js"></script>
+<script src="js/vendor/phpjs.js"></script>
+<!-- Object.observe polyfill, will be dropped once it lands natively in Overwolf -->
+<script src="js/vendor/Object.observe.poly.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/common.js"></script>
+<script src="js/gw2location.js"></script>
+</body>
+</html>
