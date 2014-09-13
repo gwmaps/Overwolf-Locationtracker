@@ -721,6 +721,19 @@
 					return;
 				}
 
+				var playerListInsert = function(element){
+					// insert/move the to the correct list
+					if(id === accname){
+						$('me').insert(element);
+					}
+					else if(id !== accname && current.guild.id === config.guildID){
+						$('guild').insert(element);
+					}
+					else{
+						$('others').insert(element);
+					}
+				};
+
 				// create a new player
 				if(change.type === 'add'){
 
@@ -757,16 +770,8 @@
 							map.panTo(p2ll(new google.maps.Point(this.dataset.posX, this.dataset.posY)));
 						});
 
-					// insert/move the to the correct list
-					if(id === accname){
-						$('me').insert(playerListItem);
-					}
-					else if(id !== accname && current.guild.id === config.guildID){
-						$('guild').insert(playerListItem);
-					}
-					else{
-						$('others').insert(playerListItem);
-					}
+					playerListInsert(playerListItem);
+
 				}
 
 				// get the existing player
@@ -778,19 +783,12 @@
 						.down('img').writeAttribute({'src': 'img/profession/'+professionIcons[current.profession], 'alt': current.charname})
 						.next('span').update(current.charname+(current.guild.tag ? ' ['+current.guild.tag+']' : ''));
 
-					// insert/move the to the correct list
-					if(id === accname){
-						$('me').insert($(id));
+					if(old && old.guild.id !== current.guild.id){
+						playerListInsert($(id));
 					}
-					else if(id !== accname && current.guild.id === config.guildID){
-						$('guild').insert($(id));
-					}
-					else{
-						$('others').insert($(id));
-					}
+
 				}
 
-				var pos = p2ll(new google.maps.Point(current.pos[0], current.pos[1]));
 
 				// determine marker fill color
 				var fillColor;
@@ -805,7 +803,7 @@
 				}
 
 				// set the marker options
-				playerMarkers[id].setPosition(pos);
+				playerMarkers[id].setPosition(p2ll(new google.maps.Point(current.pos[0], current.pos[1])));
 				playerMarkers[id].setIcon({
 					anchor: new google.maps.Point(10, 10),
 					path: 'M 20,10 0,4 5,10 0,16 z', // marker icon - SVG path
