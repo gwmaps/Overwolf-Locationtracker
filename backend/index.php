@@ -198,6 +198,9 @@ if(gpc_in('data', 'post')){
 
 		// enough checks for now
 		if(!isset($response['error'])){
+
+			// todo: player and accountname cols unique? player verification?
+
 			// prepare the SQL statement
 			$sql = 'REPLACE INTO '.TABLE_PLAYER_POS.' (`player_uid`,
 						`acc_name`, `char_name`, `profession`, `team_color`,
@@ -232,7 +235,8 @@ if(gpc_in('data', 'post')){
 			$db->P($sql, $values);
 
 			// return the inserted values
-			$response['msg'] = $values;
+			$response['msg'] = 'data received.';
+			$response['data'] = $values;
 
 			// also check if the guild is already in the DB and add it if not
 			if($pcre_guild['id'] !== '00000000-0000-0000-0000-000000000000'){
@@ -259,6 +263,9 @@ if(gpc_in('data', 'post')){
 								VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
 
 						$db->P($sql, $values);
+
+						// append the guild data to the response on add
+						$response['guild'] = $values;
 					}
 				}
 			}
@@ -266,7 +273,8 @@ if(gpc_in('data', 'post')){
 		}
 		else{
 			// return the received data on error...
-			$response['msg'] = $data;
+			$response['error'][] = 'invalid request.';
+			$response['data'] = $data;
 			// ...and add a HTTP/400
 			header('HTTP/1.1 400 Bad Request');
 		}
@@ -321,10 +329,10 @@ else if(gpc_in('json', 'post')){
 					foreach($result as $r){
 						// add some player states
 						switch(true){
-							case $r['pos_time'] < time()-60*60: $state = 3; break; // last seen > 1h ago -> gray
-							case $r['pos_time'] < time()-60*30: $state = 2; break; // 30min -> red
-							case $r['pos_time'] < time()-60*15: $state = 1; break; // 15min -> orange
-							default: $state = 0; break; // online -> green
+							case $r['pos_time'] < time()-60*60: $state = 3; break; // last seen > 1h ago -> offline
+							case $r['pos_time'] < time()-60*30: $state = 2; break; // 30min -> afk
+							case $r['pos_time'] < time()-60*15: $state = 1; break; // 15min -> away
+							default: $state = 0; break; // online
 						}
 
 						// fix WvW borderland map names
