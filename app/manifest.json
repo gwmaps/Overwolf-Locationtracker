@@ -30,11 +30,11 @@
 				"resizable": true,
 				"show_in_taskbar": true,
 				"size": {
-					"width": 1280,
-					"height": 720
+					"width": 1024,
+					"height": 576
 				},
 				"min_size":{
-					"width": 450,
+					"width": 200,
 					"height": 200
 				}
 			},
@@ -48,7 +48,7 @@
 					"height": 405
 				},
 				"min_size":{
-					"width": 250,
+					"width": 200,
 					"height": 100
 				}
 			},
@@ -62,7 +62,7 @@
 					"height": 405
 				},
 				"min_size":{
-					"width": 250,
+					"width": 200,
 					"height": 100
 				}
 			},
@@ -76,8 +76,8 @@
 					"height": 405
 				},
 				"min_size":{
-					"width": 620,
-					"height": 200
+					"width": 200,
+					"height": 100
 				}
 			},
 			"stats":{
@@ -90,7 +90,7 @@
 					"height": 405
 				},
 				"min_size":{
-					"width": 250,
+					"width": 200,
 					"height": 100
 				}
 			}
