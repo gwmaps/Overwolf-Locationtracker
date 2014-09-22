@@ -76,11 +76,12 @@ Element.addMethods({
 			return;
 		}
 
-		new PeriodicalExecuter(function(pe){
+		var timer = function(pe){
 			var now = phpjs.time();
 			if(timestamp <= now){
-				element.update('');
 				pe.stop();
+				element.update('');
+				element.dataset.timer = 'false';
 			}
 			else{
 				var end = phpjs.mktime(
@@ -102,8 +103,13 @@ Element.addMethods({
 				str += phpjs.sprintf('%1$02d', Math.floor(diff/60))+':'+phpjs.sprintf('%1$02d', Math.floor(diff%60));
 
 				element.update(str);
+				element.dataset.timer = 'true';
 			}
-		}, 1);
+		};
+
+		if(!element.dataset.timer || element.dataset.timer === 'false'){
+			new PeriodicalExecuter(timer, 1);
+		}
 
 		return element;
 	}
